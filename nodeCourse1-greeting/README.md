@@ -12,10 +12,10 @@ Welcome to the Greetings CLI Tool! This Node.js command-line application allows 
 ## Installation
 
 1. **Clone the repository:**
-   git clone https://github.com/yourusername/greetings-cli-tool.git
-   cd greetings-cli-tool
+   git clone https://github.com/DavXYZ/nodeCourse1.git
+   cd nodeCourse1
 
-2. npm install
+3. npm install
 
 ## Usage
 You can use the CLI tool to generate greetings by running the following command:
