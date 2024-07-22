@@ -3,24 +3,18 @@ import translateText from './translate.js';
 
 const geoUrl = 'http://api.openweathermap.org/geo/1.0/direct';
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
-const weatherApiKey = 'f1dac33ba087eecd888cb8baab76acbb'; // Replace with your actual API key
+const weatherApiKey = 'f1dac33ba087eecd888cb8baab76acbb'; 
 
 export async function fetchWeather(city) {
     try {
         if (!city) {
             throw new Error("City is undefined");
         }
-
-        // Fetch geographic coordinates of the city
         const geoResponse = await axios.get(`${geoUrl}?q=${city}&appid=${weatherApiKey}`);
-
         if (!geoResponse.data || geoResponse.data.length === 0) {
             throw new Error(`No data received for city ${city}`);
         }
-
         const { lat, lon } = geoResponse.data[0];
-
-        // Fetch current weather data
         const weatherResponse = await axios.get(`${weatherUrl}`, {
             params: {
                 lat,
@@ -29,7 +23,6 @@ export async function fetchWeather(city) {
                 units: 'metric'
             }
         });
-
         const { temp, humidity, pressure } = weatherResponse.data.main;
         const { main: condition, description } = weatherResponse.data.weather[0];
         const { speed: windSpeed, deg: windDirection } = weatherResponse.data.wind;
@@ -60,13 +53,13 @@ export async function fetchWeather(city) {
 
 function getWeatherEmoji(condition) {
     const weatherEmojis = {
-        'Clear': '☀️',    // Sun emoji
-        'Clouds': '☁️',   // Cloud emoji
-        'Rain': '🌧️',    // Rain emoji
-        'Snow': '❄️',     // Snow emoji
-        'Drizzle': '🌦️', // Sun behind rain cloud
-        'Thunderstorm': '⛈️', // Cloud with lightning and rain
-        'Mist': '😶‍🌫️',    // Fog emoji
+        'Clear': '☀️',    
+        'Clouds': '☁️',   
+        'Rain': '🌧️',    
+        'Snow': '❄️',    
+        'Drizzle': '🌦️', 
+        'Thunderstorm': '⛈️', 
+        'Mist': '😶‍🌫️',    
         'Smoke': '😶‍🌫️',
         'Haze': '😶‍🌫️',
         'Dust': '🌪️',
@@ -76,5 +69,5 @@ function getWeatherEmoji(condition) {
         'Squall': '🌬️',
         'Tornado': '🌪️'
     };
-    return weatherEmojis[condition] || '🌀'; // Default emoji if unknown
+    return weatherEmojis[condition] || '🌀'; 
 }
