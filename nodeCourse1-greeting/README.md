@@ -49,7 +49,8 @@ Files
 - node-fetch: Node.js implementation of the Fetch API.
 
 ## API Keys
-This project uses the OpenWeatherMap API to fetch weather data. You need to insert your API key in the weather.capital.js file.
+1.LibreTranslate: This project uses the LibreTranslate API for translations. It does not require an API key by default, but if you use a different instance that requires authentication, update translate.js with your instance URL.
+2.OpenWeatherMap: This project uses the OpenWeatherMap API for fetching weather data. To use it, you need an API key.
 
 Happy greeting!
 
